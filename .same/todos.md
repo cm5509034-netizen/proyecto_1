@@ -31,13 +31,31 @@
 - ✅ Panel de notificaciones con filtros
 - ✅ Visualización de los 5 Porqués con conexiones tipo árbol
 
+### Estados Vacíos (Nueva Sesión)
+- ✅ **Ilustraciones SVG mejoradas** con gradientes detallados y sombras
+- ✅ **Animaciones CSS avanzadas**: float, sparkle, ring, wave, glow, bounce-soft, pulse-ring
+- ✅ **Nueva ilustración "no-whys"**: Árbol visual con 5 ramas numeradas
+- ✅ **Microinteracciones hover**: Transiciones suaves y efecto scale
+- ✅ **Mejor soporte dark mode**: Colores adaptados para ambos temas
+
 ---
 
-## 🔄 PENDIENTE (Para Futuras Sesiones)
+## 🔄 EN PROGRESO
+
+### Responsividad Móvil
+- [ ] Adaptar sidebar para móvil (drawer/sheet)
+- [ ] Cards de 5 Porqués responsive
+- [ ] Plan de acción adaptable
+- [ ] Header compacto para móvil
+- [ ] Paneles laterales colapsables
+
+---
+
+## 📋 PENDIENTE (Para Futuras Sesiones)
 
 ### Prioridad Alta
-1. [ ] **Estados vacíos mejorados** - Diseñar ilustraciones SVG personalizadas para cuando no hay datos
-2. [ ] **Responsividad móvil** - Mejorar la experiencia en dispositivos móviles y tablets
+1. [x] **Estados vacíos mejorados** - ✅ COMPLETADO
+2. [ ] **Responsividad móvil** - 🔄 EN PROGRESO
 3. [ ] **Exportar análisis a PDF** - Permitir exportar el análisis completo con formato
 
 ### Prioridad Media
@@ -83,6 +101,16 @@
   - Tooltips animados
   - Persistencia en localStorage
   - Botón para reiniciar el tour
+
+### Empty States Mejorados
+- Componente: empty-states.tsx
+- Ilustraciones: NoNotifications, NoActions, EvaluationPending, NoAnalysis, NoResults, NoWhys
+- Animaciones CSS personalizadas: float, sparkle, ring, wave, glow, bounce-soft, pulse-ring
+- Features:
+  - SVGs con gradientes múltiples
+  - Efectos de sombra (drop-shadow)
+  - Hover effects con transform scale
+  - Soporte completo para dark mode
 
 ---
 
