@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Analysis {
+  id                 String       @id @default(cuid())
+  problemTitle       String
+  problemDescription String
+  rootCause          String?
+  status             String       @default("DRAFT") // DRAFT, IN_PROGRESS, COMPLETED
+  bloomLevel         Float?
+  bloomLabel         String?
+  planningQuality    Float?
+  viabilityScore     Float?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  whyAnswers         WhyAnswer[]
+  actionItems        ActionItem[]
+}
+
+model WhyAnswer {
+  id             String   @id @default(cuid())
+  whyNumber      Int      // 1-5
+  answer         String
+  evaluationLevel String?
+  evaluationScore Float?
+  evaluationMaxScore Float?
+  evaluationFeedback String?
+  isCompleted    Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  analysisId     String
+  analysis       Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  @@unique([analysisId, whyNumber])
+}
+
+model ActionItem {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  priority    String   @default("MEDIA") // ALTA, MEDIA, BAJA
+  status      String   @default("PENDIENTE") // PENDIENTE, EN_PROGRESO, COMPLETADO
+  responsible String?
+  dueDate     String?
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  analysisId  String
+  analysis    Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+}
